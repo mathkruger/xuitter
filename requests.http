@@ -1,0 +1,18 @@
+POST http://localhost:8080/xuitte
+content-type: application/json
+
+{
+    "content": "Testing testing 123"
+}
+
+###
+
+GET http://localhost:8080/xuitte
+
+###
+
+GET http://localhost:8080/xuitte/2
+
+###
+
+DELETE http://localhost:8080/xuitte/2
