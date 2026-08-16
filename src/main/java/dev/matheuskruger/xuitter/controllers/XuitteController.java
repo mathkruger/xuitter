@@ -1,15 +1,15 @@
 package dev.matheuskruger.xuitter.controllers;
 
 import java.util.*;
- 
+
 import org.springframework.beans.factory.annotation.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.http.converter.HttpMessageNotWritableException;
 import org.springframework.web.bind.annotation.*;
 
 import dev.matheuskruger.xuitter.domain.Xuitte;
 import dev.matheuskruger.xuitter.services.XuitteService;
+import jakarta.persistence.EntityNotFoundException;
 
 @RestController
 public class XuitteController {
@@ -22,13 +22,9 @@ public class XuitteController {
     }
 
     @GetMapping("/xuitte/{id}")
-    public ResponseEntity<Xuitte> get(@PathVariable Integer id){
-        try {
-            Xuitte xuitte = service.get(id);
-            return new ResponseEntity<>(xuitte, HttpStatus.OK);
-        } catch (HttpMessageNotWritableException e) {
-            return new ResponseEntity<Xuitte>(HttpStatus.NOT_FOUND);
-        }
+    public ResponseEntity<Xuitte> get(@PathVariable Integer id) {
+        Xuitte xuitte = service.get(id);
+        return new ResponseEntity<>(xuitte, xuitte == null ? HttpStatus.NOT_FOUND : HttpStatus.OK);
     }
 
     @PostMapping("/xuitte")
