@@ -11,6 +11,7 @@ import dev.matheuskruger.xuitter.domain.Xuitte;
 import dev.matheuskruger.xuitter.services.XuitteService;
 
 @RestController
+@CrossOrigin(origins = "${frontend.url}")
 public class XuitteController {
     @Autowired
     private XuitteService service;
