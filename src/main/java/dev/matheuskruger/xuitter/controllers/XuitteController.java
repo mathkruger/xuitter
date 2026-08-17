@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.*;
 
 import dev.matheuskruger.xuitter.domain.Xuitte;
 import dev.matheuskruger.xuitter.services.XuitteService;
-import jakarta.persistence.EntityNotFoundException;
 
 @RestController
 public class XuitteController {
