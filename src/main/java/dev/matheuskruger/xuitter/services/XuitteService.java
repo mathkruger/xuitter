@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 
 import dev.matheuskruger.xuitter.domain.Xuitte;
 import dev.matheuskruger.xuitter.repositories.XuitteRepository;
-import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
 
 @Service
@@ -25,11 +24,8 @@ public class XuitteService {
     }
 
     public Xuitte get(Integer id) {
-        try {
-            return repo.getReferenceById(id);
-        } catch (EntityNotFoundException e) {
-            return null;
-        }
+        return repo.findById(id)
+            .orElse(null);
     }
 
     public void delete(Integer id) {

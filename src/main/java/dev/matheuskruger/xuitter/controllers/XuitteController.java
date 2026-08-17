@@ -23,7 +23,7 @@ public class XuitteController {
 
     @GetMapping("/xuitte/{id}")
     public ResponseEntity<Xuitte> get(@PathVariable Integer id) {
-        Xuitte xuitte = service.get(id);
+        var xuitte = service.get(id);
         return new ResponseEntity<>(xuitte, xuitte == null ? HttpStatus.NOT_FOUND : HttpStatus.OK);
     }
 
